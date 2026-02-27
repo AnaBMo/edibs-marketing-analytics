@@ -1,12 +1,10 @@
-# 📊 EDIBS Marketing Analytics
+# EDIBS Marketing Analytics
 
 Análisis completo de marketing digital para agencia: modelado de datos en BigQuery, arquitectura medallón, métricas de performance y dashboard ejecutivo en Looker Studio.
 
-**🔗 [Ver Documentación Completa](https://anabmo.github.io/edibs-marketing-analytics/)** | **📊 [Dashboard Interactivo](https://lookerstudio.google.com/s/vFdXddMmvvs)**
-
 ---
 
-## 🎯 Proyecto
+##  Proyecto
 
 Diseño y construcción de modelo analítico completo para agencia de marketing digital que gestiona campañas para múltiples clientes.
 
@@ -18,7 +16,7 @@ Diseño y construcción de modelo analítico completo para agencia de marketing 
 
 ---
 
-## 📁 Estructura
+##  Estructura
 ```
 edibs-marketing-analytics/
 ├── index.html              # Documentación completa (Fase 1 + Fase 2)
@@ -32,7 +30,7 @@ edibs-marketing-analytics/
 
 ---
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 **Medallion Architecture en BigQuery:**
 
@@ -42,7 +40,7 @@ edibs-marketing-analytics/
 
 ---
 
-## 📊 Resultados Clave
+##  Resultados Clave
 
 **Dashboard:** [Ver en Looker Studio](https://lookerstudio.google.com/s/vFdXddMmvvs)
 
@@ -53,13 +51,13 @@ edibs-marketing-analytics/
 - Conversiones: 81,236
 
 **Insights Principales:**
-1. 🔴 ROAS global crítico (1.34) - necesita llegar a 2.0
-2. 📈 LinkedIn lidera (ROAS 1.40) pero diferencia mínima vs otros canales
-3. ⚠️ Alta concentración: top 2 clientes = 45% revenue
+1.  ROAS global crítico (1.34) - necesita llegar a 2.0
+2.  LinkedIn lidera (ROAS 1.40) pero diferencia mínima vs otros canales
+3.  Alta concentración: top 2 clientes = 45% revenue
 
 ---
 
-## 🛠️ Stack Tecnológico
+##  Stack Tecnológico
 
 - **Cloud:** Google Cloud Platform
 - **Data Warehouse:** BigQuery
@@ -69,7 +67,7 @@ edibs-marketing-analytics/
 
 ---
 
-## 📖 Documentación
+##  Documentación
 
 Toda la documentación técnica y análisis está disponible en:
 
@@ -85,7 +83,7 @@ Incluye:
 
 ---
 
-## 🚀 Uso
+##  Uso
 
 **Ver documentación:**
 ```bash
@@ -106,7 +104,7 @@ cd sql/gold/
 
 ## 📝 Contexto
 
-Prueba técnica para **Analista de Datos Mid/Senior** en EDIBS School.
+Prueba técnica para **Analista de Datos** en EDIBS School.
 
 **Nota:** Proyecto desarrollado con datos sintéticos. Las credenciales de GCP no están incluidas por seguridad.
 
