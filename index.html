@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Marketing EDIBS School | Ana Morales</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-section h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-section .lead {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.3rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+        }
+        
+        .diagram-container {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .btn-custom {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--primary-color);
+        }
+        
+        .nav-pills .nav-link.active {
+            background: var(--secondary-color);
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .dashboard-preview {
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-preview:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+        
+        .dashboard-preview img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .table-info {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1><i class="bi bi-graph-up-arrow"></i> Análisis de Marketing Digital</h1>
+                    <p class="lead">Prueba Técnica - Analista de Datos Mid/Senior | EDIBS School</p>
+                    <p>Modelado de datos, arquitectura medallón, métricas de performance y análisis estratégico</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="tech-badge"><i class="bi bi-google"></i> Google Cloud Platform</div>
+                    <div class="tech-badge"><i class="bi bi-database"></i> BigQuery</div>
+                    <div class="tech-badge"><i class="bi bi-bar-chart"></i> Looker Studio</div>
+                    <div class="tech-badge"><i class="bi bi-code-slash"></i> SQL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navegación de secciones -->
+    <div class="container mb-4">
+        <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="resumen-tab" data-bs-toggle="tab" data-bs-target="#resumen" type="button" role="tab">
+                    <i class="bi bi-house"></i> Resumen
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="fase1-tab" data-bs-toggle="tab" data-bs-target="#fase1" type="button" role="tab">
+                    <i class="bi bi-diagram-3"></i> Fase 1: Modelado
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="fase2-tab" data-bs-toggle="tab" data-bs-target="#fase2" type="button" role="tab">
+                    <i class="bi bi-lightbulb"></i> Fase 2: Insights
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="dashboards-tab" data-bs-toggle="tab" data-bs-target="#dashboards" type="button" role="tab">
+                    <i class="bi bi-clipboard-data"></i> Dashboards
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contenido de tabs -->
+    <div class="container">
+        <div class="tab-content" id="myTabContent">
+            
+            <!-- TAB: RESUMEN -->
+            <div class="tab-pane fade show active" id="resumen" role="tabpanel">
+                <h2 class="section-title">Resumen Ejecutivo</h2>
+                
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="metric-card text-center">
+                            <i class="bi bi-people-fill" style="font-size: 2rem; color: var(--secondary-color);"></i>
+                            <div class="metric-number">5</div>
+                            <p class="text-muted">Clientes</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card text-center">
+                            <i class="bi bi-megaphone-fill" style="font-size: 2rem; color: var(--success-color);"></i>
+                            <div class="metric-number">15</div>
+                            <p class="text-muted">Campañas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card text-center">
+                            <i class="bi bi-cart-fill" style="font-size: 2rem; color: var(--accent-color);"></i>
+                            <div class="metric-number">9.1K</div>
+                            <p class="text-muted">Transacciones</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card text-center">
+                            <i class="bi bi-graph-up" style="font-size: 2rem; color: #f39c12;"></i>
+                            <div class="metric-number">465</div>
+                            <p class="text-muted">Días de Ads</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-6">
+                        <h4><i class="bi bi-bullseye"></i> Objetivo del Proyecto</h4>
+                        <p>Diseñar y construir un modelo analítico completo para una agencia de marketing digital, incluyendo:</p>
+                        <ul>
+                            <li>Modelado relacional y esquema estrella optimizado</li>
+                            <li>Cálculo de métricas clave (ROAS, CPA, Conversion Rate)</li>
+                            <li>Dashboard interactivo en Looker Studio</li>
+                            <li>Análisis estratégico con insights accionables</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><i class="bi bi-stack"></i> Arquitectura Implementada</h4>
+                        <div class="table-info">
+                            <p><strong>Bronze Layer:</strong> Datos crudos desde Cloud Storage</p>
+                            <p><strong>Silver Layer:</strong> Limpieza y normalización</p>
+                            <p><strong>Gold Layer:</strong> Modelo estrella optimizado</p>
+                            <p><strong>Visualización:</strong> Dashboards en Looker Studio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h4><i class="bi bi-gear-fill"></i> Stack Tecnológico</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="table-info">
+                                <h6><i class="bi bi-cloud-fill"></i> Infraestructura</h6>
+                                <ul class="mb-0">
+                                    <li>Google Cloud Storage</li>
+                                    <li>BigQuery</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="table-info">
+                                <h6><i class="bi bi-code-square"></i> Procesamiento</h6>
+                                <ul class="mb-0">
+                                    <li>SQL (BigQuery)</li>
+                                    <li>Arquitectura Medallón</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="table-info">
+                                <h6><i class="bi bi-graph-up"></i> Visualización</h6>
+                                <ul class="mb-0">
+                                    <li>Looker Studio</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: FASE 1 - MODELADO -->
+            <div class="tab-pane fade" id="fase1" role="tabpanel">
+                <h2 class="section-title">Fase 1: Modelado Técnico</h2>
+
+                <!-- Análisis de estructura -->
+                <div class="mt-4">
+                    <h4><i class="bi bi-table"></i> 1. Análisis de Estructura de Datos</h4>
+                    
+                    <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <div class="table-info">
+                                <h6>Tablas Dimensionales</h6>
+                                <ul>
+                                    <li><strong>clients:</strong> 5 registros, 4 columnas</li>
+                                    <li><strong>campaigns:</strong> 15 registros, 6 columnas</li>
+                                    <li><strong>products:</strong> 10 registros, 3 columnas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="table-info">
+                                <h6>Tablas de Hechos</h6>
+                                <ul>
+                                    <li><strong>sales:</strong> 9,134 registros, 4 columnas</li>
+                                    <li><strong>ads_daily:</strong> 465 registros, 6 columnas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo Relacional -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-diagram-3"></i> 2. Modelo Relacional</h4>
+                    <p>Relaciones identificadas entre las tablas del sistema:</p>
+                    
+                    <div class="diagram-container text-center">
+                        <img src="diagrams/modelo-relacional.png" alt="Modelo Relacional" class="img-fluid" style="max-width: 100%;">
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>Cardinalidades:</h6>
+                        <ul>
+                            <li><strong>clients → campaigns:</strong> 1:N (Un cliente tiene múltiples campañas)</li>
+                            <li><strong>campaigns → sales:</strong> 1:N (Una campaña genera múltiples ventas)</li>
+                            <li><strong>campaigns → ads_daily:</strong> 1:N (Una campaña tiene datos diarios de ads)</li>
+                            <li><strong>products → sales:</strong> 1:N (Un producto se vende en múltiples transacciones)</li>
+                        </ul>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>Llaves Primarias y Foráneas:</h6>
+                        <ul class="mb-0">
+                            <li><strong>PK Simples:</strong> client_id, campaign_id, product_id</li>
+                            <li><strong>PK Compuestas:</strong> sales (campaign_id + date + product_id), ads_daily (campaign_id + date)</li>
+                            <li><strong>FK:</strong> campaigns.client_id, sales.campaign_id, sales.product_id, ads_daily.campaign_id</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Esquema Estrella -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-star-fill"></i> 3. Esquema Estrella (Star Schema)</h4>
+                    <p>Modelo dimensional optimizado para análisis de marketing:</p>
+                    
+                    <div class="diagram-container text-center">
+                        <img src="diagrams/esquema-estrella.png" alt="Esquema Estrella" class="img-fluid" style="max-width: 100%;">
+                    </div>
+
+                    <div class="mt-3">
+                        <h6>💡 Justificación del Diseño:</h6>
+                        <ul>
+                            <li><strong>Tabla de Hechos Única:</strong> Combina métricas de ads y ventas por fecha y campaña</li>
+                            <li><strong>Dimensión Fecha:</strong> Facilita análisis temporal (tendencias, estacionalidad)</li>
+                            <li><strong>Dimensión Cliente:</strong> Referencia directa desde la tabla de hechos para consultas eficientes</li>
+                            <li><strong>Métricas Calculadas:</strong> ROAS, CPA y Conversion Rate pre-calculados para performance</li>
+                            <li><strong>Granularidad:</strong> Nivel diario por campaña y producto</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Métricas -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-calculator"></i> 4. Métricas Calculadas</h4>
+                    
+                    <div class="table-info">
+                        <h6>Métricas Básicas:</h6>
+                        <ul>
+                            <li><strong>ROAS (Return on Ad Spend):</strong> revenue_usd / ad_spend_usd</li>
+                            <li><strong>CPA (Cost Per Acquisition):</strong> ad_spend_usd / conversions</li>
+                            <li><strong>Conversion Rate:</strong> (conversions / clicks) * 100</li>
+                        </ul>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>Métricas Avanzadas:</h6>
+                        <ul class="mb-0">
+                            <li><strong>ROAS por Cliente:</strong> Agregación a nivel cliente para comparativas</li>
+                            <li><strong>CPA por Canal:</strong> Eficiencia de adquisición por tipo de canal</li>
+                            <li><strong>CTR (Click-Through Rate):</strong> (clicks / impressions) * 100</li>
+                            <li><strong>Revenue per Click:</strong> revenue_usd / clicks</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!-- Medidas Personalizadas -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-sliders"></i> 5. Medidas Personalizadas</h4>
+                    <p>Métricas calculadas dinámicamente según diferentes dimensiones de análisis:</p>
+                    
+                    <div class="table-info">
+                        <h6>📈 ROAS Dinámico por Dimensión:</h6>
+                        <ul>
+                            <li><strong>ROAS por Cliente:</strong> Agregación de revenue y ad_spend a nivel cliente para identificar los clientes más rentables</li>
+                            <li><strong>ROAS por Canal:</strong> Comparativa de eficiencia entre canales (Google Ads, Facebook, Instagram, etc.)</li>
+                            <li><strong>ROAS por Producto:</strong> Identificar qué productos generan mejor retorno publicitario</li>
+                            <li><strong>ROAS por Período:</strong> Análisis de tendencias temporales (mensual, trimestral)</li>
+                        </ul>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>💰 CPA Ajustado por Contexto:</h6>
+                        <ul>
+                            <li><strong>CPA por Canal:</strong> Costo de adquisición segmentado por canal de marketing</li>
+                            <li><strong>CPA por Campaña:</strong> Eficiencia de cada campaña individual</li>
+                            <li><strong>CPA Temporal:</strong> Variación del costo por conversión en diferentes períodos (fin de semana vs días laborables)</li>
+                        </ul>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>🎯 Métricas de Eficiencia Avanzadas:</h6>
+                        <ul class="mb-0">
+                            <li><strong>Costo Marginal por Conversión:</strong> Incremento en ad_spend necesario para obtener una conversión adicional</li>
+                            <li><strong>Revenue per Impression:</strong> Ingresos generados por cada mil impresiones (RPM)</li>
+                            <li><strong>Conversion Value:</strong> Valor promedio de cada conversión (revenue / conversions)</li>
+                            <li><strong>Campaign Efficiency Score:</strong> Métrica combinada que pondera ROAS, CTR y Conversion Rate</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-warning mt-3">
+                        <strong>💡 Nota:</strong> Estas métricas se calcularán dinámicamente en BigQuery y estarán disponibles en el dashboard de Looker Studio con filtros interactivos por cliente y canal.
+                    </div>
+                </div>
+
+
+                <!-- Propuesta de Mejora -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-wrench"></i> 6. Propuesta de Mejora Estructural</h4>
+                    
+                    <div class="table-info">
+                        <h6>Problemas Detectados:</h6>
+                        <ul>
+                            <li>Sales y Ads_Daily están separadas, dificultando análisis conjunto</li>
+                            <li>No existe dimensión de tiempo (fecha) estructurada</li>
+                            <li>Métricas calculadas en cada query (no pre-computadas)</li>
+                            <li>Falta información sobre cliente en las tablas de hechos (requiere múltiples joins)</li>
+                        </ul>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>Mejoras Implementadas en Gold Layer:</h6>
+                        <ul class="mb-0">
+                            <li><strong>Tabla de Hechos Unificada:</strong> Combina sales + ads_daily</li>
+                            <li><strong>Dimensión Fecha:</strong> Tabla separada con atributos temporales</li>
+                            <li><strong>Métricas Pre-calculadas:</strong> ROAS, CPA, CR almacenados</li>
+                            <li><strong>Desnormalización Controlada:</strong> Incluir client_name en tabla de hechos para queries más rápidas</li>
+                            <li><strong>Particionamiento por Fecha:</strong> Mejora performance en BigQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: FASE 2 - INSIGHTS -->
+            <div class="tab-pane fade" id="fase2" role="tabpanel">
+                <h2 class="section-title">Fase 2: Análisis Estratégico e Insights</h2>
+                
+                <div class="alert alert-warning mt-4">
+                    <i class="bi bi-calendar-range"></i> <strong>Contexto de Datos:</strong> Análisis basado en 73 días de histórico (6 Ene - 19 Mar 2024). Las conclusiones son válidas para este período pero se recomienda validar con datos de ciclo completo (12 meses).
+                </div>
+
+                <!-- Resumen Ejecutivo de Insights -->
+                <div class="mt-4">
+                    <h4><i class="bi bi-bar-chart-line-fill"></i> Resumen Ejecutivo</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Insight</th>
+                                    <th>Criticidad</th>
+                                    <th>Acción Inmediata</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>ROAS Global Crítico (1.34)</td>
+                                    <td><span class="badge bg-danger">🔴 Alta</span></td>
+                                    <td>Pausar campañas con ROAS &lt;1.2</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Todos los canales tienen ROAS bajo</td>
+                                    <td><span class="badge bg-warning">🟡 Media</span></td>
+                                    <td>Optimización en todos los canales</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Email = Canal menos eficiente</td>
+                                    <td><span class="badge bg-warning">🟡 Media</span></td>
+                                    <td>Limpieza de listas</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Alta concentración en 2 clientes</td>
+                                    <td><span class="badge bg-warning">🟠 Media</span></td>
+                                    <td>Plan de adquisición + retención</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Histórico limitado (73 días)</td>
+                                    <td><span class="badge bg-success">🟢 Baja</span></td>
+                                    <td>Implementar tracking continuo 12 meses</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Insight 1 -->
+                <div class="mt-5">
+                    <div class="card border-danger">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="mb-0"><i class="bi bi-exclamation-triangle-fill"></i> INSIGHT 1: ROAS Global Crítico - Rentabilidad en Riesgo</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6><strong>Hallazgo:</strong></h6>
+                            <p>
+                                El ROAS promedio de <strong>1.34</strong> indica que por cada dólar invertido en publicidad, solo se genera $1.34 en revenue. 
+                                Esto deja un margen muy ajustado que probablemente <strong>no cubre costos operativos, productos y overhead</strong>.
+                            </p>
+
+                            <div class="alert alert-info">
+                                • ROAS saludable para agencias digitales: <strong>2.0 - 4.0</strong><br>
+                                • ROAS actual: <strong>1.34</strong><br>
+                                • Gap: <strong>0.66 puntos</strong> 
+                            </div>
+
+                            <h6><strong>Recomendaciones:</strong></h6>
+                            <ol>
+                                <li> Elevar ROAS a mínimo <strong>2.0</strong> (punto de break-even saludable)</li>
+                                <li><strong>Pausar campañas</strong> con ROAS &lt;1.2 (actualmente 3 campañas en este rango)</li>
+                                <li><strong>Duplicar presupuesto</strong> en campañas con ROAS >1.5 (GREENMARKET+LinkedIn, FINEDGE+Facebook)</li>
+                                <li><strong>Revisar pricing</strong> de productos para mejorar margen</li>
+                            </ol>
+
+                            <div class="alert alert-danger">
+                                <strong>⚠️ Riesgo si no se actúa:</strong><br>
+                                • Continuar operando con pérdidas o márgenes insostenibles<br>
+                                • Agotamiento de presupuesto sin retorno suficiente<br>
+                                • Imposibilidad de escalar el negocio
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 2 -->
+                <div class="mt-5">
+                    <div class="card border-warning">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0"><i class="bi bi-graph-up"></i> INSIGHT 2: Diferencias Mínimas Entre Canales - Problema Sistémico</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6><strong>Hallazgo:</strong></h6>
+                            <p>
+                                Aunque LinkedIn lidera con <strong>ROAS 1.40</strong>, la diferencia con el peor canal (Email, 1.28) es de solo <strong>9%</strong>. 
+                                Todos los canales tienen ROAS por debajo del umbral saludable (&lt;2.0).
+                            </p>
+
+                            <h6><strong>Análisis Comparativo por Canal:</strong></h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Canal</th>
+                                            <th>ROAS</th>
+                                            <th>Revenue</th>
+                                            <th>% vs Promedio</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>LinkedIn</strong></td>
+                                            <td>1.40</td>
+                                            <td>$502,799</td>
+                                            <td>+4.5%</td>
+                                            <td><span class="badge bg-success">Mejor</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Facebook</strong></td>
+                                            <td>1.36</td>
+                                            <td>$463,089</td>
+                                            <td>+1.5%</td>
+                                            <td><span class="badge bg-info">Promedio</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Google Ads</strong></td>
+                                            <td>1.30</td>
+                                            <td>$200,317</td>
+                                            <td>-3.0%</td>
+                                            <td><span class="badge bg-warning">Bajo promedio</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Email</strong></td>
+                                            <td>1.28</td>
+                                            <td>$473,758</td>
+                                            <td>-4.5%</td>
+                                            <td><span class="badge bg-danger">Peor</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <strong>⚠️ Conclusión Crítica:</strong> La diferencia entre el mejor y peor canal es solo <strong>$0.12 por dólar invertido</strong>. 
+                                Esto sugiere un <strong>problema sistémico</strong> más que un problema de canal específico.
+                            </div>
+
+                            <h6><strong>Recomendaciones:</strong></h6>
+                            <ol>
+                                <li><strong>No reasignar presupuesto</strong> entre canales (diferencias muy pequeñas)</li>
+                                <li><strong>Optimización transversal:</strong>
+                                    <ul>
+                                        <li>Revisar segmentación de audiencias en TODOS los canales</li>
+                                        <li>Mejorar creatividades y copy</li>
+                                        <li>Optimizar landing pages y funnel de conversión</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Caso de estudio:</strong> Analizar por qué GREENMARKET+LinkedIn tiene ROAS 1.75 (vs promedio 1.40 del canal) y replicar tácticas</li>
+                                <li><strong>Test de incrementalidad:</strong> Pausar temporalmente 1 canal para medir impacto real (no solo correlación)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 3 -->
+                <div class="mt-5">
+                    <div class="card border-warning">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0"><i class="bi bi-envelope-x"></i> INSIGHT 3: Email = Canal Menos Eficiente - Requiere Optimización Urgente</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6><strong>Hallazgo:</strong></h6>
+                            <p>
+                                Email tiene el <strong>peor ROAS (1.28)</strong> y alto revenue ($473,758), lo que indica volumen alto pero baja eficiencia. 
+                                A pesar de tener buen CTR (3.15%), no convierte eficientemente. <br>
+                                <strong>Conclusión:</strong> Email genera clicks pero no convierte en ventas rentables
+                            </p>
+
+                            <h6><strong>Posibles Causas:</strong></h6>
+                            <div class="alert alert-info">
+                            <ul>
+                                <li><strong>Segmentación deficiente:</strong> Listas genéricas</li>
+                                <li><strong>Calidad de leads:</strong> Alto CTR pero bajo intento de compra</li>
+                                <li><strong>Mensajes genéricos:</strong> Falta de personalización por industria/producto</li>
+                                <li><strong>Landing pages:</strong> Desconexión entre mensaje de email y página de destino</li>
+                                <li><strong>Fatiga de audiencia:</strong> Over-mailing a mismas listas</li>
+                            </ul>
+                            </div>
+
+                            <h6><strong>Recomendaciones:</strong></h6>
+                            <ol>
+                                <li><strong>Limpieza de listas:</strong>
+                                    <ul>
+                                        <li>Remover suscriptores sin engagement en últimos 90 días</li>
+                                        <li>Implementar re-engagement campaign antes de eliminar</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Pausar 2 campañas</strong> con menor ROAS (TECHNOVA Email, FINEDGE Email)</li>
+                                <li><strong>Benchmark objetivo:</strong> ROAS email >1.5 (alineado con mejores canales)</li>
+                            </ol>
+
+                            <div class="alert alert-danger">
+                                <strong>⚠️ Riesgo si no se actúa:</strong><br>
+                                • Continuar quemando presupuesto en canal ineficiente<br>
+                                • Deterioro de reputación de marca por sobre-comunicación<br>
+                                • Listas quemadas que pierden valor a largo plazo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 4 -->
+                <div class="mt-5">
+                    <div class="card border-info">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="bi bi-clock-history"></i> INSIGHT 4: Datos Limitados (73 días) - Análisis Estacional Imposible</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6><strong>Hallazgo:</strong></h6>
+                            <p>
+                                El período analizado (<strong>6 Enero - 19 Marzo 2024, 73 días</strong>) no permite identificar patrones estacionales 
+                                ni tendencias de largo plazo. Todas las conclusiones son válidas solo para este período específico.
+                            </p>
+
+                            <div class="alert alert-info">
+                                <strong>💡 Contexto Temporal:</strong><br>
+                                • Período: Enero-Marzo (post-navidad, inicio de año fiscal)<br>
+                                • Puede haber sesgo por comportamiento típico de Q1<br>
+                                • Falta visibilidad de Q4 (temporada alta para retail/e-commerce)
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <strong>⚠️ Riesgo si no se actúa:</strong><br>
+                                • Tomar decisiones estratégicas sin contexto estacional completo<br>
+                                • Perder oportunidades de optimización por falta de histórico<br>
+                                • Incapacidad de predecir performance en temporadas clave
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recomendaciones Generales -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-list-check"></i> Resumen de Acciones Prioritarias</h4>
+                    <div class="table-info">
+                        <h6>🔴 Acciones Inmediatas (Esta Semana):</h6>
+                        <ol>
+                            <li>Pausar 3 campañas con ROAS &lt;1.2</li>
+                            <li>Optimización de campañas de Email</li>
+                            <li>Configurar alertas de ROAS y CPA en BigQuery</li>
+                        </ol>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>🟡 Acciones a Corto Plazo (Próximas 2-4 Semanas):</h6>
+                        <ol>
+                            <li>Análisis profundo de campaña GREENMARKET+LinkedIn (ROAS 1.75) para replicar tácticas</li>
+                            <li>Limpieza de listas de email y segmentación mejorada</li>
+                            <li>Iniciar programa de retención para top 2 clientes</li>
+                            <li>Optimización de landing pages y funnel de conversión</li>
+                        </ol>
+                    </div>
+
+                    <div class="table-info mt-3">
+                        <h6>🟢 Acciones a Medio Plazo (1-3 Meses):</h6>
+                        <ol>
+                            <li>Plan de adquisición de 2-3 clientes nuevos</li>
+                            <li>Acumular 6 meses de datos para análisis de tendencias</li>
+                            <li>Revisar y ajustar pricing de productos</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB: DASHBOARDS -->
+            <div class="tab-pane fade" id="dashboards" role="tabpanel">
+                <h2 class="section-title">Dashboards Interactivos</h2>
+                
+                <div class="alert alert-success mt-4">
+                    <i class="bi bi-check-circle-fill"></i> <strong>Dashboard Publicado:</strong> Panel analítico interactivo disponible en Looker Studio con datos actualizados desde BigQuery.
+                </div>
+
+                <!-- Dashboard Principal -->
+                <div class="mt-4">
+                    <h4><i class="bi bi-clipboard-data"></i> Marketing Performance Dashboard</h4>
+                    
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0"><i class="bi bi-bar-chart-line"></i> EDIBS School - Marketing Performance Dashboard</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Contenido del Dashboard:</strong></p>
+                                    <ol>
+                                        <li><strong>KPIs Principales:</strong> Revenue Total, ROAS Promedio, CPA Promedio, Total Conversiones</li>
+                                        <li><strong>ROAS y CTR por Canal:</strong> Gráfico combinado (barras + línea) comparando eficiencia de canales</li>
+                                        <li><strong>Top 10 Campañas por ROAS:</strong> Tabla con ranking de mejores campañas por rentabilidad</li>
+                                        <li><strong>Tendencia Temporal:</strong> Evolución diaria de Revenue vs Ad Spend (73 días)</li>
+                                        <li><strong>Performance por Cliente:</strong> Tabla comparativa de clientes por ROAS y volumen</li>
+                                    </ol>
+
+                                    <div class="alert alert-info mt-3 mb-0">
+                                        <small>
+                                            <i class="bi bi-info-circle"></i> <strong>Período de datos:</strong> 6 Enero - 19 Marzo 2024 (73 días) | 
+                                            <strong>Última actualización:</strong> 27 Febrero 2026
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mt-3">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0"><i class="bi bi-database"></i> Fuentes de Datos</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-2"><strong>Vistas BigQuery:</strong></p>
+                                    <ul class="mb-0 small">
+                                        <li><code>v_roas_by_channel</code></li>
+                                        <li><code>v_campaign_performance</code></li>
+                                        <li><code>v_roas_by_client</code></li>
+                                        <li><code>fact_marketing_performance</code></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Embebido -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-eye"></i> Vista Previa Interactiva</h4>
+                    <p class="text-muted">Explora el dashboard directamente desde esta página o ábrelo en una nueva pestaña para experiencia completa:</p>
+                    
+                    <div class="dashboard-preview" style="border: 2px solid #dee2e6; border-radius: 10px; overflow: hidden; margin: 1rem 0;">
+                        <iframe 
+                            src="https://lookerstudio.google.com/embed/reporting/d398e064-ac19-47f9-8e38-91600635a94b/page/p_vfqtfk8hmd"
+                            frameborder="0" 
+                            style="border:0; width: 100%; height: 700px;"
+                            allowfullscreen 
+                            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+                        </iframe>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <a href="https://lookerstudio.google.com/s/vFdXddMmvvs" target="_blank" class="btn btn-primary btn-lg">
+                            <i class="bi bi-box-arrow-up-right"></i> Abrir Dashboard en Nueva Pestaña
+                        </a>
+                    </div>
+
+                    <div class="alert alert-secondary mt-3">
+                        <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> Para mejor experiencia, abre el dashboard en pantalla completa usando el botón de arriba.
+                    </div>
+                </div>
+
+                <!-- Mejoras Futuras -->
+                <div class="mt-5">
+                    <h4><i class="bi bi-rocket"></i> Roadmap de Mejoras</h4>
+                    
+                    <div class="table-info">
+                        <h6>🔜 Próximas Mejoras Planificadas:</h6>
+                        <ul class="mb-0">
+                            <li><strong>Alertas automáticas:</strong> Notificaciones cuando ROAS cae por debajo de 1.2</li>
+                            <li><strong>Análisis YoY:</strong> Comparación año sobre año cuando haya 12+ meses de datos</li>
+                            <li><strong>Modelo predictivo:</strong> Estimación de ROAS futuro basado en tendencias históricas</li>
+                            <li><strong>Análisis de atribución multi-touch:</strong> Entender el journey completo del cliente</li>
+                            <li><strong>Benchmarking de industria:</strong> Comparación con ROAS promedio del sector</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-bar-chart-line"></i> Análisis Marketing EDIBS School</h5>
+                    <p>Desarrollado por Ana Morales</p>
+                    <p class="mb-0"><small>© 2026 - Prueba Técnica con datos sintéticos</small></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-outline-light btn-sm" onclick="showRepoModal()">
+                        <i class="bi bi-code-slash"></i> Ver Repositorio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Repositorio Público -->
+    <div class="modal fade" id="repoModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <i class="bi bi-github" style="font-size: 3rem; color: #333;"></i>
+                    <h5 class="mt-3">Proyecto en GitHub</h5>
+                    <p class="text-muted">
+                        El código fuente completo está disponible en el siguiente repositorio de GitHub. Incluye:
+                    </p>
+                    <ul class="text-start mb-3">
+                        <li>Queries SQL (Bronze, Silver, Gold layers)</li>
+                        <li>Scripts de carga de datos en Python</li>
+                        <li>Documentación completa del proyecto</li>
+                        <li>Diagramas de modelo de datos</li>
+                    </ul>
+                    <div class="alert alert-info text-start">
+                        <small>
+                            <i class="bi bi-info-circle"></i> 
+                            <strong>Nota:</strong> Este proyecto utiliza datos sintéticos para demostración. 
+                            Las credenciales y configuración de GCP no están incluidas por seguridad.
+                        </small>
+                    </div>
+                    <hr>
+                    <a href="https://github.com/AnaBMo/edibs-marketing-analytics" 
+                    target="_blank" 
+                    class="btn btn-dark btn-lg w-100">
+                        <i class="bi bi-github"></i> Ver Repositorio en GitHub
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function showRepoModal() {
+            const modal = new bootstrap.Modal(document.getElementById('repoModal'));
+            modal.show();
+        }
+    </script>
+
+</body>
+</html>
